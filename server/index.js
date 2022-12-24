@@ -56,7 +56,6 @@ function getTweets(socket) {
     streamTweets.on('data', (data) => {
         try {
             const json = JSON.parse(data) 
-            console.log(json)
             socket.emit('tweet', json)
         } catch (error) {}
     })
@@ -70,7 +69,6 @@ io.on('Connection', async () => {
 
     try {
         currentRules = await getRules()
-
         await setRules()
     } catch (error) {
         console.log(error)
